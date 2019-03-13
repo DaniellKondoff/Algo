@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Sorting.QuickSort
 {
-    public class Quick
+    public class QuickSortGen
     {
-        public static void Sort(int[] arr)
+        public static void Sort<T>(T[] arr) where T : IComparable<T>
         {
-            Sort(arr, 0, arr.Length -1); 
+            Sort(arr, 0, arr.Length - 1);
             Console.WriteLine(string.Join(" ", arr));
         }
 
-        private static void Sort(int[] arr, int start, int end)
+        private static void Sort<T>(T[] arr, int start, int end) where T : IComparable<T>
         {
             if (start >= end)
             {
@@ -23,14 +25,14 @@ namespace Sorting.QuickSort
             Sort(arr, pivot + 1, end);
         }
 
-        static int Partition(int[] arr, int start, int end)
+        static int Partition<T>(T[] arr, int start, int end) where T : IComparable<T>
         {
-            int pivot = arr[end];
+            T pivot = arr[end];
 
             int i = (start - 1);
             for (int j = start; j < end; j++)
             {
-                if (arr[j] <= pivot)
+                if (arr[j].CompareTo(pivot) <= 0)
                 {
                     i++;
 
@@ -43,9 +45,9 @@ namespace Sorting.QuickSort
             return i + 1;
         }
 
-        private static void Swap(int firstIndex, int secondIndex, int[] arr)
+        private static void Swap<T>(int firstIndex, int secondIndex, T[] arr) where T : IComparable<T>
         {
-            int temp = arr[firstIndex];
+            T temp = arr[firstIndex];
             arr[firstIndex] = arr[secondIndex];
             arr[secondIndex] = temp;
         }
