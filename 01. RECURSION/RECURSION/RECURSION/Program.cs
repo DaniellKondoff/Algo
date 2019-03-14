@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RECURSION
 {
@@ -7,16 +8,20 @@ namespace RECURSION
     {
         public const int Size = 8;
         public static int[,] board = new int[Size, Size];
+        public static char[,] lab;
 
         public static HashSet<int> attackedRows = new HashSet<int>();
         public static HashSet<int> attackedColumns = new HashSet<int>();
         public static HashSet<int> attackedLeftDiagonals = new HashSet<int>();
         public static HashSet<int> attackedRightDiagonals = new HashSet<int>();
 
+        public static List<char> path = new List<char>();
+
 
         static void Main(string[] args)
         {
-            Solve8Queens(0);
+            ReadLab();
+            SolveLabyrint(0, 0, 'S');
         }
 
         public static void Solve8Queens(int row)
@@ -242,6 +247,79 @@ namespace RECURSION
                     GenComb(set, vector, index + 1, i + 1);
                 }
             }
+        }
+
+        private static void ReadLab()
+        {
+            int rows = int.Parse(Console.ReadLine());
+            int cols = int.Parse(Console.ReadLine());
+            lab = new char[rows, cols];
+
+            for (int row = 0; row < rows; row++)
+            {
+                string currentLine = Console.ReadLine();
+
+                for (int col = 0; col < cols; col++)
+                {
+                    lab[row, col] = currentLine[col];
+                }
+            }
+        }
+
+        public static void SolveLabyrint(int row, int col, char direction)
+        {
+            if (OutSideOfLabyrint(row, col))
+            {
+                return;
+            }
+
+            path.Add(direction);
+            if (IsExit(row, col))
+            {
+                PrintLabyrint();
+            }
+            else if (IsPassable(row, col))
+            {
+                lab[row, col] = 'x';
+                SolveLabyrint(row + 1, col, 'D'); //Down
+                SolveLabyrint(row - 1, col, 'U'); //Up
+                SolveLabyrint(row, col + 1, 'R'); //Right
+                SolveLabyrint(row, col - 1, 'L'); //left
+                lab[row, col] = '-';
+            }
+
+            path.RemoveAt(path.Count - 1);
+        }
+
+        private static bool IsPassable(int row, int col)
+        {
+            //alrady visited
+            if (lab[row, col] == 'x') return false;
+
+            //wall
+            if (lab[row, col] == '*') return false;
+
+            return true;
+        }
+
+        private static bool IsExit(int row, int col)
+        {
+            return lab[row, col] == 'e';
+        }
+
+        private static void PrintLabyrint()
+        {
+            Console.WriteLine(string.Join(string.Empty, path.Skip(1)));
+        }
+
+        private static bool OutSideOfLabyrint(int row, int col)
+        {
+            if (row < 0 || row >= lab.GetLength(0) || col < 0 || col >= lab.GetLength(1))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
