@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RECURSION", "RECURSION\RECURSION.csproj", "{F3AFCBF9-8E1E-4AC6-9825-77E5FA510D65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RECURSION", "RECURSION\RECURSION.csproj", "{F3AFCBF9-8E1E-4AC6-9825-77E5FA510D65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW", "HW\HW.csproj", "{FE241E39-FCF7-49CA-B6E5-4A7A7DB085EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F3AFCBF9-8E1E-4AC6-9825-77E5FA510D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3AFCBF9-8E1E-4AC6-9825-77E5FA510D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3AFCBF9-8E1E-4AC6-9825-77E5FA510D65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE241E39-FCF7-49CA-B6E5-4A7A7DB085EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE241E39-FCF7-49CA-B6E5-4A7A7DB085EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE241E39-FCF7-49CA-B6E5-4A7A7DB085EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE241E39-FCF7-49CA-B6E5-4A7A7DB085EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
